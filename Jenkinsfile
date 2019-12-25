@@ -143,6 +143,7 @@ pipeline{
                     sh """
                         cd dirPatch
                         git remote set-url origin https://${USER}:${PASS}@github.com/dreamkas/dirPatch.git
+                        git branch --set-upstream-to=origin/master
                         git pull origin master
                         git status
                         git add .
