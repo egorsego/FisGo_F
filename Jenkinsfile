@@ -143,17 +143,11 @@ pipeline{
                     sh """
                         cd dirPatch
                         git remote set-url origin https://${USER}:${PASS}@github.com/dreamkas/dirPatch.git
-                        git branch --set-upstream-to=origin/master
-                        git pull origin master
-                        git status
-                        git add .
-                        git commit -m "dirPatch dreamkasF ${fisgoVersion}"
-                        git push origin master
+                        git branch
 
                         cd ../FisGo 
                         git config --local credential.helper "!f() { echo username=\\$USER; echo password=\\$PASS; }; f"
-                        git tag ${fisgoVersion}
-                        git push origin --tags
+                        git branch
                     """
                 }
             }
