@@ -142,8 +142,13 @@ pipeline{
                 withCredentials([usernamePassword(credentialsId: 'fisgo-ci-github', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
                     sh """
                         cd dirPatch
-                        git remote set-url origin https://${USER}:${PASS}@github.com/dreamkas/dirPatch.git
-                        git branch
+                        git remote set-url origin https://${USER}:${PASS}@github.com/egorsego/dirPatch.git
+                        git checkout master
+                        git pull
+                        git status
+                        git add .
+                        git commit -m "dirPatch dreamkasF ${fisgoVersion}"
+                        git push origin master
 
                         cd ../FisGo 
                         git config --local credential.helper "!f() { echo username=\\$USER; echo password=\\$PASS; }; f"
