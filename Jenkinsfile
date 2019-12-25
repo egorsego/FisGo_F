@@ -152,7 +152,8 @@ pipeline{
 
                         cd ../FisGo 
                         git config --local credential.helper "!f() { echo username=\\$USER; echo password=\\$PASS; }; f"
-                        git branch
+                        git tag ${fisgoVersion}
+                        git push origin --tags
                     """
                 }
             }
