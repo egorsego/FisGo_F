@@ -143,7 +143,7 @@ pipeline{
                     sh """
                         cd dirPatch
                         git remote set-url origin https://${USER}:${PASS}@github.com/egorsego/dirPatch.git
-                        git checkout master
+                        git branch --set-upstream-to=origin/master master
                         git pull
                         git status
                         git add .
