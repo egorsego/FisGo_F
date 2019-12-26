@@ -15,6 +15,9 @@ pipeline{
     stages{
         stage("Build Libraries"){
             steps{
+
+                echo "Commit: $GIT_COMMIT"
+                echo "Branch: $GIT_BRANCH"
                 
                 script{
                     if(env.GIT_BRANCH.equals("master")) {
