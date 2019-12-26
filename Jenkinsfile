@@ -231,5 +231,5 @@ String getMd5ofFile(String filePath) {
 
 String getTimestamp() {
     timestamp = sh(returnStdout: true, script:"date +%s")
-    return timestamp
+    return timestamp.trim()
 }
