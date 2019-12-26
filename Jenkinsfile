@@ -18,9 +18,6 @@ pipeline{
 
                 echo "Commit: $GIT_COMMIT"
                 echo "Branch: $GIT_BRANCH"
-                echo "Change target: $CHANGE_TARGET"
-                echo "Change branch: $CHANGE_BRANCH"
-                
                 
                 script{
                     if(env.GIT_BRANCH.equals("master")) {
