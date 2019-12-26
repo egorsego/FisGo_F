@@ -15,10 +15,13 @@ pipeline{
     stages{
         stage("Build Libraries"){
             steps{
+
+                echo "Commit: $GIT_COMMIT"
+                echo "Branch: $GIT_BRANCH"
                 
                 script{
                     if(env.GIT_BRANCH.equals("master")) {
-                        fisgoVersion = getFisgoVersionFromConfig()
+                        fisgoVersion = getTimestamp()
                         usedTags = getTags()
                         println(fisgoVersion)
                         println(usedTags)
@@ -224,4 +227,9 @@ String getTags() {
 String getMd5ofFile(String filePath) {
     md5Value = sh(returnStdout: true, script:"md5sum ${filePath} | cut -d ' ' -f 1")
     return md5Value
+}
+
+String getTimestamp() {
+    timestamp = sh(returnStdout: true, script:"date +%s")
+    return timestamp
 }
